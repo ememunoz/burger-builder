@@ -1,0 +1,40 @@
+.toolbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #703B09;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  z-index: 90;
+}
+
+.logo {
+  height: 4.4rem;
+}
+
+.navItems {
+  display: none;
+}
+
+.menuIcon {
+  color: white;
+  padding: 8px;
+  height: 4.4rem;
+  width: 4.4rem;
+}
+
+@media screen and (min-width: 500px) {
+  .navItems {
+    display: block;
+  }
+  .menuIcon {
+    display: none;
+  }
+
+  .toolbar {
+    padding: 0 2rem;
+  }
+}

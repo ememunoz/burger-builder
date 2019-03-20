@@ -1,0 +1,35 @@
+.navItem {
+  margin: 1rem 0;
+}
+
+.navItem a {
+  color: #8f5c2c;
+  text-decoration: none;
+  padding: 1.6rem 1rem;
+}
+
+.navItem a:hover,
+.navItem a:active,
+.navItem a.active {
+  color: #40A4C8;
+}
+
+@media screen and (min-width: 500px) {
+  .navItem {
+    margin: 0;
+    display: flex;
+  }
+  
+  .navItem a {
+    color: white;
+    border-bottom: 4px solid transparent;
+  }
+  
+  .navItem a:hover,
+  .navItem a:active,
+  .navItem a.active {
+    background-color: #8f5c2c;
+    border-bottom: 4px solid #40A4C8;
+    color: white;
+  }
+}
