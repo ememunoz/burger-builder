@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import burgerInstance from '../../axios';
+import React, { Component, Fragment } from 'react'
 
-import Burger from './Components/Burger/Burger';
-import BuildControls from './Components/BuildControls/BuildControls';
+// import burgerInstance from '../../axios'
+import BuildControls from './Components/BuildControls/BuildControls'
+import Burger from './Components/Burger/Burger'
 
 const INGREDIENT_PRICES = {
   bacon: 0.6,
@@ -12,7 +12,6 @@ const INGREDIENT_PRICES = {
 }
 
 class BurgerBuilder extends Component {
-
   state = {
     ingredients: {
       bacon: 0,
@@ -31,8 +30,8 @@ class BurgerBuilder extends Component {
         ...prevState.ingredients,
         [type]: prevState.ingredients[type] + 1,
       },
-      totalPrice: prevState.totalPrice + INGREDIENT_PRICES[type]
-    }));
+      totalPrice: prevState.totalPrice + INGREDIENT_PRICES[type],
+    }))
   }
 
   removeIngredientHandler = type => {
@@ -42,41 +41,43 @@ class BurgerBuilder extends Component {
           ...prevState.ingredients,
           [type]: prevState.ingredients[type] - 1,
         },
-        totalPrice: prevState.totalPrice - INGREDIENT_PRICES[type]
-      }));
+        totalPrice: prevState.totalPrice - INGREDIENT_PRICES[type],
+      }))
     }
   }
 
-  openOrderModalHandler = () => this.setState({ modalOpen: true });
-  closeOrderModalHandler = () => {console.log("MAMG clicked");this.setState({ modalOpen: false })};
+  openOrderModalHandler = () => this.setState({ modalOpen: true })
+  closeOrderModalHandler = () => {
+    this.setState({ modalOpen: false })
+  }
 
   placeOrderHandler = e => {
-    e.stopPropagation();
-    this.setState({ postLoading: true });
-    const { ingredients, totalPrice } = this.state;
-    const data = {
-      ingredients,
-      totalPrice,
-      customer: {
-        name: 'Marco',
-        address: 'Street',
-        email: 'mail@mail.com'
-      },
-      deliveryMethod: 'fastest'
-    }
-    burgerInstance.post('/orders.json', data)
-      .then(response => {
-        this.setState({ postLoading: false, modalOpen: false });
-        console.log("MAMG response", response);
-      })
-      .catch(err => {
-        this.setState({ postLoading: false, modalOpen: false });
-        console.log("MAMG err", err);
-      });
+    e.stopPropagation()
+    this.setState({ postLoading: true })
+    // const { ingredients, totalPrice } = this.state
+    // const data = {
+    //   ingredients,
+    //   totalPrice,
+    //   customer: {
+    //     name: 'Eme',
+    //     address: 'Street',
+    //     email: 'mail@mail.com',
+    //   },
+    //   deliveryMethod: 'fastest',
+    // }
+    // burgerInstance.post('/orders.json', data)
+    //   .then(response => {
+    //     this.setState({ postLoading: false, modalOpen: false });
+    //     console.log("MAMG response", response);
+    //   })
+    //   .catch(err => {
+    //     this.setState({ postLoading: false, modalOpen: false });
+    //     console.log("MAMG err", err);
+    //   });
   }
 
   render() {
-    const { ingredients, modalOpen, postLoading, totalPrice } = this.state;
+    const { ingredients, modalOpen, postLoading, totalPrice } = this.state
     return (
       <Fragment>
         <Burger ingredients={ingredients} />
@@ -96,4 +97,4 @@ class BurgerBuilder extends Component {
   }
 }
 
-export default BurgerBuilder;
+export default BurgerBuilder
